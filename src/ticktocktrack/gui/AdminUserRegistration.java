@@ -114,7 +114,7 @@ public class AdminUserRegistration {
             double startY = 100;
             double gap = 80;
 
-            TextField emailField = createTextField("Email", startX, startY);
+            TextField emailField = createTextField("Email Address", startX, startY);
             TextField usernameField = createTextField("Username", startX, startY + gap * 1);
 
          // Create the ComboBox for Role
@@ -173,7 +173,7 @@ public class AdminUserRegistration {
             double startY = 100;
             double gap = 70;
 
-            TextField studentIDField = createTextField("Student ID", startX, startY);
+            TextField emailField = createTextField("Email Address", startX, startY);
             TextField usernameField = createTextField("Username", startX, startY + gap);
             TextField lastNameField = createTextField("Last Name", startX, startY + gap * 2);
 
@@ -193,7 +193,7 @@ public class AdminUserRegistration {
             Button doneButton = createDoneButton(800, 490);
 
             studentRegistrationPanel.getChildren().addAll(
-                    studentIDField, usernameField, lastNameField,
+                    emailField, usernameField, lastNameField,
                     firstNameField, middleNameField,
                     passwordField, confirmPasswordField,
                     doneButton
