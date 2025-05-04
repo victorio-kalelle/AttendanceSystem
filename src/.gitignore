@@ -1,0 +1,10 @@
+.venv
+
+bin/
+
+.classpath
+.project
+.settings/
+build.fxbuild.xml
+
+.vscode/
