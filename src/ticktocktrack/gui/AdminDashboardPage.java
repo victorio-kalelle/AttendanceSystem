@@ -73,10 +73,10 @@ public class AdminDashboardPage extends Application {
         // User Icon
         String userIconPath = getClass().getResource("/resources/Admin_Dashboard/Admin_user_icon.png").toExternalForm();
         ImageView userIcon = new ImageView(new Image(userIconPath));
-        userIcon.setFitWidth(90);
-        userIcon.setFitHeight(90);
+        userIcon.setFitWidth(75);
+        userIcon.setFitHeight(75);
         userIcon.setLayoutX(1200);
-        userIcon.setLayoutY(5);
+        userIcon.setLayoutY(19);
         userIcon.setCursor(Cursor.HAND);
         
      // --- User Icon Popup Handling (keep your event here) ---
@@ -207,10 +207,10 @@ public class AdminDashboardPage extends Application {
         // Dashboard icon
         String dashboardIconPath = getClass().getResource("/resources/Dashboard_icon.png").toExternalForm();
         ImageView dashboardIcon = new ImageView(new Image(dashboardIconPath));
-        dashboardIcon.setFitWidth(55);
-        dashboardIcon.setFitHeight(55);
-        dashboardIcon.setLayoutX(22);
-        dashboardIcon.setLayoutY(20);
+        dashboardIcon.setFitWidth(40);
+        dashboardIcon.setFitHeight(40);
+        dashboardIcon.setLayoutX(21);
+        dashboardIcon.setLayoutY(25);
       
         // Dashboard text
         Text dashboardText = new Text("Dashboard");
@@ -256,10 +256,10 @@ public class AdminDashboardPage extends Application {
         // Add Icon
         String addIconPath = getClass().getResource("/resources/Admin_Dashboard/Admin_add_icon.png").toExternalForm();
         ImageView addIcon = new ImageView(new Image(addIconPath));
-        addIcon.setFitWidth(51);
-        addIcon.setFitHeight(51);
-        addIcon.setLayoutX(26);
-        addIcon.setLayoutY(130);
+        addIcon.setFitWidth(40);
+        addIcon.setFitHeight(40);
+        addIcon.setLayoutX(21);
+        addIcon.setLayoutY(133);
        
      // Create Users Text
         Text createUsersText = new Text("Create Users");
@@ -292,10 +292,10 @@ public class AdminDashboardPage extends Application {
      // View All icon image
         String viewAllPath = getClass().getResource("/resources/Admin_Dashboard/Admin_view_all_icon.png").toExternalForm();
         ImageView viewAllIcon = new ImageView(new Image(viewAllPath));
-        viewAllIcon.setFitWidth(69);
-        viewAllIcon.setFitHeight(69);
-        viewAllIcon.setLayoutX(17); // x position
-        viewAllIcon.setLayoutY(210); // y position
+        viewAllIcon.setFitWidth(47);
+        viewAllIcon.setFitHeight(47);
+        viewAllIcon.setLayoutX(21); // x position
+        viewAllIcon.setLayoutY(222); // y position
         
 
         // Add "View All Users" text
@@ -338,9 +338,9 @@ public class AdminDashboardPage extends Application {
         // Report icon image
         String reportIconPath = getClass().getResource("/resources/Admin_Dashboard/Admin_report_icon.png").toExternalForm();
         ImageView reportIcon = new ImageView(new Image(reportIconPath));
-        reportIcon.setFitWidth(56);
-        reportIcon.setFitHeight(56);
-        reportIcon.setLayoutX(25); // x position
+        reportIcon.setFitWidth(40);
+        reportIcon.setFitHeight(40);
+        reportIcon.setLayoutX(21); // x position
         reportIcon.setLayoutY(355); // y position
         
      // Create "Attendance Reports" Text
@@ -375,10 +375,10 @@ public class AdminDashboardPage extends Application {
         // Hammer wrench icon image
         String hammerWrenchPath = getClass().getResource("/resources/Admin_Dashboard/Admin_hammer_wrench_icon.png").toExternalForm();
         ImageView hammerWrenchIcon = new ImageView(new Image(hammerWrenchPath));
-        hammerWrenchIcon.setFitWidth(53);
-        hammerWrenchIcon.setFitHeight(53);
-        hammerWrenchIcon.setLayoutX(26); // x position
-        hammerWrenchIcon.setLayoutY(455); // y position
+        hammerWrenchIcon.setFitWidth(41);
+        hammerWrenchIcon.setFitHeight(41);
+        hammerWrenchIcon.setLayoutX(21); // x position
+        hammerWrenchIcon.setLayoutY(457); // y position
 
         // Add "Manage Accounts" text
         Text manageAccountsText = new Text("Manage Accounts");
