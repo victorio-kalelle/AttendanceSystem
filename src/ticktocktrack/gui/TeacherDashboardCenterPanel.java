@@ -1,105 +1,103 @@
 package ticktocktrack.gui;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.paint.Color;
 
-public class TeacherDashboardCenterPanel {
+public class TeacherAddCourseCenterPanel {
 
     public static Pane createPanel() {
-        // Create the center panel
         Pane centerPanel = new Pane();
         centerPanel.setPrefSize(1300, 750);
         centerPanel.setLayoutX(0);
         centerPanel.setLayoutY(0);
         centerPanel.setStyle("-fx-background-color: white; -fx-border-color: #cccccc; -fx-border-width: 1px;");
-        
-        // Shadow image
-        String shadowPath = TeacherDashboardCenterPanel.class.getResource("/resources/SHADOW.png").toExternalForm();
+
+        String shadowPath = TeacherAddCourseCenterPanel.class.getResource("/resources/SHADOW.png").toExternalForm();
         ImageView shadowView = new ImageView(new Image(shadowPath));
         shadowView.setFitWidth(1300);
         shadowView.setFitHeight(250);
         shadowView.setLayoutX(0);
         shadowView.setLayoutY(-115);
-        
-     // Load Teacher Background image
-        String teacherBgPath = TeacherDashboardCenterPanel.class.getResource("/resources/Teacher_Dashboard/Teacher_bg.png").toExternalForm();
-        ImageView teacherBgView = new ImageView(new Image(teacherBgPath));
-        teacherBgView.setFitWidth(1000);   // Adjust the width as needed
-        teacherBgView.setFitHeight(210);   // Adjust the height as needed
-        teacherBgView.setLayoutX(20);      // X position
-        teacherBgView.setLayoutY(50);      // Y position
 
-        // Load Teacher Effects image
-        String teacherEffectsPath = TeacherDashboardCenterPanel.class.getResource("/resources/Teacher_Dashboard/Teacher_effects.png").toExternalForm();
-        ImageView teacherEffectsView = new ImageView(new Image(teacherEffectsPath));
-        teacherEffectsView.setFitWidth(490);  // Set the width
-        teacherEffectsView.setFitHeight(275); // Set the height
-        teacherEffectsView.setLayoutX(530);   // X position
-        teacherEffectsView.setLayoutY(-5);     // Y position
 
-      
 
-        // Create the "Teacher Dashboard" Text
-        Text dashboardTitle = new Text("Welcome Teacher!");
-        dashboardTitle.setFont(Font.font("Poppins", FontWeight.BOLD, 30));
-        dashboardTitle.setFill(Color.web("#02383E"));
-        dashboardTitle.setLayoutX(70);
-        dashboardTitle.setLayoutY(220);
-
-        // Panel for Number of Classes (Default 0)
-        Pane classPanel = createBoxPanel(50, 290, 300, 120, "Total Classes", 0); // Default 0 classes
-
-        // Panel for Number of Students (Default 0)
-        Pane studentsPanel = createBoxPanel(400, 290, 300, 120, "Number of Students", 0); // Default 0 students
-
-        // Add panels to the center panel
-        centerPanel.getChildren().addAll(shadowView,  teacherBgView, teacherEffectsView, dashboardTitle, classPanel, studentsPanel);
+        centerPanel.getChildren().addAll(shadowView, createUsersTitle, openDialogBtn);
 
         return centerPanel;
     }
 
-    // Helper method to create a styled box panel with a label and the relevant number (e.g., days or classes)
-    private static Pane createBoxPanel(double x, double y, double width, double height, String labelText, int value) {
-        Pane box = new Pane();
-        box.setPrefSize(width, height);
-        box.setLayoutX(x);
-        box.setLayoutY(y);
-        box.setStyle(
-            "-fx-background-color: #f0f0f0;" +
-            "-fx-background-radius: 20;" +
-            "-fx-border-color: #cccccc;" +
-            "-fx-border-radius: 20;" +
-            "-fx-border-width: 1;"
-        );
+    public static Pane createAddCourseDialog(Pane root) {
+        StackPane overlay = new StackPane();
+        overlay.setPrefSize(1300, 750);
+        overlay.setStyle("-fx-background-color: rgba(0, 0, 0, 0.4);");
 
-        // Title label
-        Text label = new Text(labelText);
-        label.setFont(Font.font("Poppins", FontWeight.BOLD, 16));
-        label.setFill(Color.web("#02383E"));
-        label.setLayoutX(20);
-        label.setLayoutY(35);
+        VBox dialog = new VBox(12);
+        dialog.setPrefWidth(350);
+        dialog.setMaxWidth(350);
+        dialog.setPadding(new Insets(20));
+        dialog.setStyle("-fx-background-color: white;");
+        dialog.setEffect(new DropShadow(8, Color.gray(0.3)));
+        dialog.setMaxHeight(Region.USE_PREF_SIZE);
 
-        // Display the relevant value (e.g., days or number of classes)
-        Text valueText = new Text(String.valueOf(value)); // Default value 0
-        valueText.setFont(Font.font("Poppins", FontWeight.BOLD, 36)); // Large number font
-        // Set color based on the type (Attendance panels = Blue, Classes and Students panel = Orange)
-        if (labelText.contains("Class")) {
-            valueText.setFill(Color.web("#FF9800")); // Orange for total classes
-        } else if (labelText.contains("Student")) {
-            valueText.setFill(Color.web("#FF9800")); // Orange for number of students
-        } else {
-            valueText.setFill(Color.web("#009688")); // Blue for other statistics
-        }
-        valueText.setLayoutX(20);
-        valueText.setLayoutY(70); // Positioning the number below the label
+         // Title
+        Text title = new Text("Add Course");
+        title.setFont(Font.font("Poppins", FontWeight.BOLD, 20));
+        title.setFill(Color.web("#02383E"));
 
-        box.getChildren().addAll(label, valueText);
+        // Fields
+        TextField courseField = new TextField();
+        courseField.setPromptText("Course Name (required)");
+        courseField.setPrefWidth(260);
+        courseField.setStyle("-fx-background-color: #eeeeee; -fx-border-color: transparent transparent black transparent; -fx-border-width: 1px;");
 
-        return box;
+        TextField sectionField = new TextField();
+        sectionField.setPromptText("Section");
+        sectionField.setPrefWidth(260);
+        sectionField.setStyle("-fx-background-color: #eeeeee; -fx-border-color: transparent transparent black transparent; -fx-border-width: 1px;");
+
+        // Buttons
+        HBox buttonBox = new HBox(20);
+        buttonBox.setAlignment(Pos.CENTER_RIGHT);
+        buttonBox.setPadding(new Insets(10, 0, 0, 0));
+
+        Button cancelBtn = new Button("Cancel");
+        cancelBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: #0097A7;");
+        cancelBtn.setOnAction(e -> root.getChildren().remove(overlay));
+
+        Button createBtn = new Button("Create");
+        createBtn.setDisable(true);
+        createBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: #aaa;");
+
+        // Enable create button when course name is filled
+        courseField.textProperty().addListener((obs, oldText, newText) -> {
+            boolean filled = !newText.trim().isEmpty();
+            createBtn.setDisable(!filled);
+            createBtn.setStyle(filled ?
+                "-fx-background-color: transparent; -fx-text-fill: #333;" :
+                "-fx-background-color: transparent; -fx-text-fill: #aaa;");
+        });
+
+        createBtn.setOnAction(e -> {
+            System.out.println("Course: " + courseField.getText());
+            System.out.println("Section: " + sectionField.getText());
+            root.getChildren().remove(overlay);
+        });
+
+        buttonBox.getChildren().addAll(cancelBtn, createBtn);
+        dialog.getChildren().addAll(title, courseField, sectionField, buttonBox);
+        overlay.getChildren().add(dialog);
+        StackPane.setAlignment(dialog, Pos.CENTER);
+
+        return overlay;
     }
 }
